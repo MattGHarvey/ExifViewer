@@ -22,21 +22,13 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ofdSelect = New System.Windows.Forms.OpenFileDialog()
         Me.btnSelect = New System.Windows.Forms.Button()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtEXIF = New System.Windows.Forms.TextBox()
+        Me.pbPhoto = New System.Windows.Forms.PictureBox()
+        Me.webMap = New System.Windows.Forms.WebBrowser()
+        CType(Me.pbPhoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox1.Location = New System.Drawing.Point(23, 12)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(493, 391)
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        Me.PictureBox1.UseWaitCursor = True
         '
         'ofdSelect
         '
@@ -44,7 +36,7 @@ Partial Class frmMain
         '
         'btnSelect
         '
-        Me.btnSelect.Location = New System.Drawing.Point(532, 105)
+        Me.btnSelect.Location = New System.Drawing.Point(30, 28)
         Me.btnSelect.Name = "btnSelect"
         Me.btnSelect.Size = New System.Drawing.Size(231, 90)
         Me.btnSelect.TabIndex = 1
@@ -52,23 +44,60 @@ Partial Class frmMain
         Me.btnSelect.UseVisualStyleBackColor = True
         Me.btnSelect.UseWaitCursor = True
         '
+        'txtEXIF
+        '
+        Me.txtEXIF.Cursor = System.Windows.Forms.Cursors.WaitCursor
+        Me.txtEXIF.Enabled = False
+        Me.txtEXIF.Location = New System.Drawing.Point(30, 591)
+        Me.txtEXIF.Multiline = True
+        Me.txtEXIF.Name = "txtEXIF"
+        Me.txtEXIF.Size = New System.Drawing.Size(572, 357)
+        Me.txtEXIF.TabIndex = 3
+        Me.txtEXIF.UseWaitCursor = True
+        '
+        'pbPhoto
+        '
+        Me.pbPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pbPhoto.Location = New System.Drawing.Point(30, 159)
+        Me.pbPhoto.Name = "pbPhoto"
+        Me.pbPhoto.Size = New System.Drawing.Size(572, 404)
+        Me.pbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbPhoto.TabIndex = 4
+        Me.pbPhoto.TabStop = False
+        '
+        'webMap
+        '
+        Me.webMap.AllowNavigation = False
+        Me.webMap.IsWebBrowserContextMenuEnabled = False
+        Me.webMap.Location = New System.Drawing.Point(30, 991)
+        Me.webMap.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.webMap.Name = "webMap"
+        Me.webMap.ScriptErrorsSuppressed = True
+        Me.webMap.ScrollBarsEnabled = False
+        Me.webMap.Size = New System.Drawing.Size(572, 446)
+        Me.webMap.TabIndex = 5
+        '
         'frmMain
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(725, 1547)
+        Me.Controls.Add(Me.webMap)
+        Me.Controls.Add(Me.pbPhoto)
+        Me.Controls.Add(Me.txtEXIF)
         Me.Controls.Add(Me.btnSelect)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Name = "frmMain"
         Me.Text = "EXIFVIewer"
         Me.UseWaitCursor = True
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbPhoto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents ofdSelect As OpenFileDialog
     Friend WithEvents btnSelect As Button
+    Friend WithEvents txtEXIF As TextBox
+    Friend WithEvents pbPhoto As PictureBox
+    Friend WithEvents webMap As WebBrowser
 End Class
