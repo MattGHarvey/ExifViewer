@@ -16,7 +16,8 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.AllowDrop = True
+        Me.Cursor = DefaultCursor
+
         dtab.Columns.Add("fName", GetType(System.String))
         dtab.Columns.Add("datetime", GetType(System.DateTime))
         dtab.Columns.Add("focallength", GetType(System.String))
@@ -54,14 +55,18 @@ Public Class frmMain
     Private Sub btnSelect_Click(sender As Object, e As EventArgs) Handles btnSelect.Click
         Me.ofdSelect.ShowDialog()
         If Me.ofdSelect.FileName.Trim <> "" Then
+            Me.btnViewOnGoogleMaps.Visible = False
+
             DisplayEXIF(Me.ofdSelect.FileName.Trim)
             Dim tImage As Bitmap = Bitmap.FromFile(Me.ofdSelect.FileName
                                                    )
             Me.pbPhoto.Image = tImage
             If mapURL <> "" Then
                 Dim finalMapURL As New Uri(mapURL)
+                btnViewOnGoogleMaps.Visible = True
 
-                Me.webMap.Url = finalMapURL
+
+
 
 
             End If
@@ -194,4 +199,10 @@ Public Class frmMain
     Private Sub txtEXIF_TextChanged(sender As Object, e As EventArgs) Handles txtEXIF.TextChanged
 
     End Sub
+
+    Private Sub btnViewOnGoogleMaps_Click(sender As Object, e As EventArgs) Handles btnViewOnGoogleMaps.Click
+        Process.Start(mapURL)
+    End Sub
+
+
 End Class
