@@ -36,42 +36,55 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
-        'Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
+        Dim files() As String = e.Data.GetData(DataFormats.FileDrop)
         'For Each path In files
-        'MsgBox(path)
+        ' MsgBox(path)
         ' Next
+        Dim filename As String = Path.GetFileName(files(0))
+        Dim extension As String = Path.GetExtension(files(0))
+        If (extension <> ".jpg" And extension <> ".jpeg") Then
+            Me.Cursor = Cursors.No
+            e.Effect = DragDropEffects.None
+        Else
+            e.Effect = DragDropEffects.Link
+        End If
     End Sub
 
     Private Sub frmMain_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            btnViewOnGoogleMaps.Visible = False
+            DisplayEXIF(files(0))
+            postDisplayActions(files(0))
+            Me.Cursor = Cursors.Default
 
-            For Each file In files
-                MessageBox.Show(file)
-            Next
         End If
     End Sub
 
-    Private Sub btnSelect_Click(sender As Object, e As EventArgs) Handles btnSelect.Click
+    Private Sub btnSelect_Click(sender As Object, e As EventArgs)
         Me.ofdSelect.ShowDialog()
         If Me.ofdSelect.FileName.Trim <> "" Then
             Me.btnViewOnGoogleMaps.Visible = False
 
             DisplayEXIF(Me.ofdSelect.FileName.Trim)
-            Dim tImage As Bitmap = Bitmap.FromFile(Me.ofdSelect.FileName
-                                                   )
-            Me.pbPhoto.Image = tImage
-            If mapURL <> "" Then
-                Dim finalMapURL As New Uri(mapURL)
-                btnViewOnGoogleMaps.Visible = True
+            postDisplayActions(Me.ofdSelect.FileName)
 
-
-
-
-
-            End If
         End If
 
+    End Sub
+    Private Sub postDisplayActions(filename As String)
+        Dim tImage As Bitmap = Bitmap.FromFile(filename
+                                                   )
+        Me.pbPhoto.Image = tImage
+        If mapURL <> "" Then
+            Dim finalMapURL As New Uri(mapURL)
+            btnViewOnGoogleMaps.Visible = True
+
+
+
+
+
+        End If
     End Sub
     Private Sub DisplayEXIF(filename As String)
         Dim directories As IEnumerable(Of MetadataExtractor.Directory) = ImageMetadataReader.ReadMetadata(filename)
@@ -204,5 +217,18 @@ Public Class frmMain
         Process.Start(mapURL)
     End Sub
 
+    Private Sub LoadPhotoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadPhotoToolStripMenuItem.Click
+        Me.ofdSelect.ShowDialog()
+        If Me.ofdSelect.FileName.Trim <> "" Then
+            Me.btnViewOnGoogleMaps.Visible = False
 
+            DisplayEXIF(Me.ofdSelect.FileName.Trim)
+            postDisplayActions(Me.ofdSelect.FileName)
+
+        End If
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        End
+    End Sub
 End Class
