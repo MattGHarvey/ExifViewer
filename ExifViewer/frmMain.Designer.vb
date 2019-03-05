@@ -22,6 +22,7 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.ofdSelect = New System.Windows.Forms.OpenFileDialog()
         Me.txtEXIF = New System.Windows.Forms.TextBox()
@@ -31,6 +32,7 @@ Partial Class frmMain
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadPhotoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuRightClick = New System.Windows.Forms.ContextMenuStrip(Me.components)
         CType(Me.pbPhoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -95,14 +97,20 @@ Partial Class frmMain
         'LoadPhotoToolStripMenuItem
         '
         Me.LoadPhotoToolStripMenuItem.Name = "LoadPhotoToolStripMenuItem"
-        Me.LoadPhotoToolStripMenuItem.Size = New System.Drawing.Size(288, 34)
+        Me.LoadPhotoToolStripMenuItem.Size = New System.Drawing.Size(225, 34)
         Me.LoadPhotoToolStripMenuItem.Text = "Load Photo..."
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(288, 34)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(225, 34)
         Me.ExitToolStripMenuItem.Text = "Exit"
+        '
+        'mnuRightClick
+        '
+        Me.mnuRightClick.ImageScalingSize = New System.Drawing.Size(28, 28)
+        Me.mnuRightClick.Name = "mnuRightClick"
+        Me.mnuRightClick.Size = New System.Drawing.Size(61, 4)
         '
         'frmMain
         '
@@ -136,4 +144,5 @@ Partial Class frmMain
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LoadPhotoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents mnuRightClick As ContextMenuStrip
 End Class
