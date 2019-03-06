@@ -65,7 +65,7 @@ Partial Class frmMain
         Me.pbPhoto.Location = New System.Drawing.Point(30, 74)
         Me.pbPhoto.Name = "pbPhoto"
         Me.pbPhoto.Size = New System.Drawing.Size(572, 404)
-        Me.pbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbPhoto.TabIndex = 4
         Me.pbPhoto.TabStop = False
         '

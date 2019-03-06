@@ -207,7 +207,11 @@ Public Class frmMain
 
         directories = Nothing
         fs.Close()
+        fName = Nothing
+
         fs.Dispose()
+        fs = Nothing
+
         GC.Collect()
     End Sub
     Public Function FixSS(ss As String)
