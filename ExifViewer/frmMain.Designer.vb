@@ -32,8 +32,9 @@ Partial Class frmMain
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadPhotoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.mnuRightClick = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuRightClick = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.pbPhoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -84,7 +85,7 @@ Partial Class frmMain
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(633, 38)
+        Me.MenuStrip1.Size = New System.Drawing.Size(914, 38)
         Me.MenuStrip1.TabIndex = 6
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -98,20 +99,14 @@ Partial Class frmMain
         'LoadPhotoToolStripMenuItem
         '
         Me.LoadPhotoToolStripMenuItem.Name = "LoadPhotoToolStripMenuItem"
-        Me.LoadPhotoToolStripMenuItem.Size = New System.Drawing.Size(288, 34)
+        Me.LoadPhotoToolStripMenuItem.Size = New System.Drawing.Size(225, 34)
         Me.LoadPhotoToolStripMenuItem.Text = "Load Photo..."
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(288, 34)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(225, 34)
         Me.ExitToolStripMenuItem.Text = "Exit"
-        '
-        'mnuRightClick
-        '
-        Me.mnuRightClick.ImageScalingSize = New System.Drawing.Size(28, 28)
-        Me.mnuRightClick.Name = "mnuRightClick"
-        Me.mnuRightClick.Size = New System.Drawing.Size(61, 4)
         '
         'AboutToolStripMenuItem
         '
@@ -119,13 +114,29 @@ Partial Class frmMain
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(82, 34)
         Me.AboutToolStripMenuItem.Text = "About"
         '
+        'mnuRightClick
+        '
+        Me.mnuRightClick.ImageScalingSize = New System.Drawing.Size(28, 28)
+        Me.mnuRightClick.Name = "mnuRightClick"
+        Me.mnuRightClick.Size = New System.Drawing.Size(61, 4)
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(739, 1006)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(120, 107)
+        Me.Button1.TabIndex = 7
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(633, 975)
+        Me.ClientSize = New System.Drawing.Size(914, 1160)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnViewOnGoogleMaps)
         Me.Controls.Add(Me.pbPhoto)
         Me.Controls.Add(Me.txtEXIF)
@@ -153,4 +164,5 @@ Partial Class frmMain
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents mnuRightClick As ContextMenuStrip
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Button1 As Button
 End Class

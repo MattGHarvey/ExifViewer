@@ -98,6 +98,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExifRemover.vb" />
     <Compile Include="frmAbout.designer.vb">
       <DependentUpon>frmAbout.vb</DependentUpon>
     </Compile>

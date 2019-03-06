@@ -1,11 +1,17 @@
 ﻿Imports System
 Imports System.IO
+Imports System.IO.MemoryStream
 Imports System.Math
 Imports MetadataExtractor
 Imports MetadataExtractor.Formats.Exif
+Imports System.Drawing
+Imports System.Drawing.Imaging
+
 Public Class frmMain
     Public Shared dtab As New DataTable
     Public Shared mapURL As String
+    Public tImage As Bitmap
+    Private Shared filename As String = ""
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
 
     End Sub
@@ -48,16 +54,19 @@ Public Class frmMain
         Else
             e.Effect = DragDropEffects.Link
         End If
+        files = nothing
     End Sub
 
     Private Sub frmMain_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
             btnViewOnGoogleMaps.Visible = False
+            filename = files(0)
             DisplayEXIF(files(0))
             postDisplayActions(files(0))
             Me.Cursor = Cursors.Default
 
+            files = Nothing
         End If
     End Sub
 
@@ -65,17 +74,17 @@ Public Class frmMain
         Me.ofdSelect.ShowDialog()
         If Me.ofdSelect.FileName.Trim <> "" Then
             Me.btnViewOnGoogleMaps.Visible = False
-
-            DisplayEXIF(Me.ofdSelect.FileName.Trim)
-            postDisplayActions(Me.ofdSelect.FileName)
+            filename = Me.ofdSelect.FileName.Trim
+            DisplayEXIF(filename)
+            postDisplayActions(filename)
 
         End If
 
     End Sub
     Private Sub postDisplayActions(filename As String)
-        Dim tImage As Bitmap = Bitmap.FromFile(filename
-                                                   )
-        Me.pbPhoto.Image = tImage
+        'Dim tImage As Bitmap = Bitmap.FromFile(filename
+        'tImage = Bitmap.FromFile(filename)
+        Me.pbPhoto.ImageLocation = filename
         If mapURL <> "" Then
             Dim finalMapURL As New Uri(mapURL)
             btnViewOnGoogleMaps.Visible = True
@@ -85,9 +94,13 @@ Public Class frmMain
 
 
         End If
+
+
     End Sub
     Private Sub DisplayEXIF(filename As String)
-        Dim directories As IEnumerable(Of MetadataExtractor.Directory) = ImageMetadataReader.ReadMetadata(filename)
+
+        Dim fs As New FileStream(filename, FileMode.Open)
+        Dim directories As IEnumerable(Of MetadataExtractor.Directory) = ImageMetadataReader.ReadMetadata(fs)
         Dim directory = directories.OfType(Of ExifSubIfdDirectory)().FirstOrDefault()
         Dim deviceDirectory = directories.OfType(Of ExifIfd0Directory)().FirstOrDefault
 
@@ -188,10 +201,14 @@ Public Class frmMain
         dtab.Rows.Add(fName, datetime, focallength, ShutterSpeed, ISO, aperture, camera, TagExposureBias, TagMeteringMode, TagFlash, TagLensModel, ColorSpace, latitude, Longitude)
 
         Me.txtEXIF.Text = exifString
+        directory = Nothing
+        deviceDirectory = Nothing
+        gpsdirectory = Nothing
 
-        Dim dv As New DataView(dtab)
-        ' dv.Sort = "datetake ASC"
-        ' DataGridView1.DataSource = dv
+        directories = Nothing
+        fs.Close()
+        fs.Dispose()
+        GC.Collect()
     End Sub
     Public Function FixSS(ss As String)
         Dim sspeed() As String
@@ -221,9 +238,9 @@ Public Class frmMain
         Me.ofdSelect.ShowDialog()
         If Me.ofdSelect.FileName.Trim <> "" Then
             Me.btnViewOnGoogleMaps.Visible = False
-
+            filename = Me.ofdSelect.FileName.Trim
             DisplayEXIF(Me.ofdSelect.FileName.Trim)
-            postDisplayActions(Me.ofdSelect.FileName)
+            postDisplayActions(Me.ofdSelect.FileName.Trim)
 
         End If
     End Sub
@@ -234,5 +251,21 @@ Public Class frmMain
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         frmAbout.ShowDialog()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim ExREm As New EXIFRemover
+        '
+        Me.pbPhoto.Dispose()
+        Me.pbPhoto.Image = Nothing
+
+        ' tImage.Dispose()
+
+        GC.Collect()
+        ExREm.RemoveExif(filename)
+
+
+        ' im.Save(outStream, ImageFormat.Jpeg)
+
     End Sub
 End Class
