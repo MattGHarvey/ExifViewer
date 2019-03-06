@@ -33,6 +33,7 @@ Partial Class frmMain
         Me.LoadPhotoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuRightClick = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.pbPhoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -80,7 +81,7 @@ Partial Class frmMain
         'MenuStrip1
         '
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(28, 28)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(633, 38)
@@ -97,13 +98,13 @@ Partial Class frmMain
         'LoadPhotoToolStripMenuItem
         '
         Me.LoadPhotoToolStripMenuItem.Name = "LoadPhotoToolStripMenuItem"
-        Me.LoadPhotoToolStripMenuItem.Size = New System.Drawing.Size(225, 34)
+        Me.LoadPhotoToolStripMenuItem.Size = New System.Drawing.Size(288, 34)
         Me.LoadPhotoToolStripMenuItem.Text = "Load Photo..."
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(225, 34)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(288, 34)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'mnuRightClick
@@ -111,6 +112,12 @@ Partial Class frmMain
         Me.mnuRightClick.ImageScalingSize = New System.Drawing.Size(28, 28)
         Me.mnuRightClick.Name = "mnuRightClick"
         Me.mnuRightClick.Size = New System.Drawing.Size(61, 4)
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(82, 34)
+        Me.AboutToolStripMenuItem.Text = "About"
         '
         'frmMain
         '
@@ -145,4 +152,5 @@ Partial Class frmMain
     Friend WithEvents LoadPhotoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents mnuRightClick As ContextMenuStrip
+    Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
 End Class
