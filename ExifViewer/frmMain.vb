@@ -3,6 +3,8 @@ Imports System.IO
 Imports System.Math
 Imports MetadataExtractor
 Imports MetadataExtractor.Formats.Exif
+Imports System.Drawing
+
 Public Class frmMain
     Public Shared dtab As New DataTable
     Public Shared mapURL As String
@@ -33,6 +35,18 @@ Public Class frmMain
         dtab.Columns.Add("ColorSpace", GetType(System.String))
         dtab.Columns.Add("latitude", GetType(System.String))
         dtab.Columns.Add("Longitude", GetType(System.String))
+
+        'Dim sMsg As String = ""
+        'For Each sArg As String In My.Application.CommandLineArgs
+        '    sMsg &= sArg & ": "
+        'Next
+        'If Me.ofdSelect.FileName.Trim <> "" Then
+        '    Me.btnViewOnGoogleMaps.Visible = False
+
+        '    DisplayEXIF(Me.ofdSelect.FileName.Trim)
+        '    postDisplayActions(Me.ofdSelect.FileName)
+
+        'End If
     End Sub
 
     Private Sub frmMain_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
@@ -73,9 +87,16 @@ Public Class frmMain
 
     End Sub
     Private Sub postDisplayActions(filename As String)
-        Dim tImage As Bitmap = Bitmap.FromFile(filename
-                                                   )
-        Me.pbPhoto.Image = tImage
+        'Dim tImage As Bitmap = Bitmap.FromFile(filename)
+        'Dim ImageA As Image = Image.FromFile(filename)
+        Dim fs As System.IO.FileStream
+        fs = New System.IO.FileStream(filename, IO.FileMode.Open, IO.FileAccess.Read)
+        Me.pbPhoto.Image = System.Drawing.Image.FromStream(fs)
+        fs.Close()
+
+        '  Me.pbPhoto.Image = tImage
+        Me.pbPhoto.BackgroundImage = Nothing
+
         If mapURL <> "" Then
             Dim finalMapURL As New Uri(mapURL)
             btnViewOnGoogleMaps.Visible = True
@@ -85,6 +106,12 @@ Public Class frmMain
 
 
         End If
+        'ImageA.Dispose()
+        ' ImageA = Nothing
+
+        'Me.pbPhoto.Image.Dispose()
+        'Me.pbPhoto.Image = Nothing
+
     End Sub
     Private Sub DisplayEXIF(filename As String)
         Dim directories As IEnumerable(Of MetadataExtractor.Directory) = ImageMetadataReader.ReadMetadata(filename)
@@ -234,5 +261,9 @@ Public Class frmMain
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         frmAbout.ShowDialog()
+    End Sub
+
+    Private Sub pbPhoto_Click(sender As Object, e As EventArgs) Handles pbPhoto.Click
+
     End Sub
 End Class

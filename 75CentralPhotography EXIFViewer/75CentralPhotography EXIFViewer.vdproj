@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:75CentralPhotography EXIFViewer"
+"ProjectName" = "8:EXIFViewer Installer"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -52,12 +52,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3BD9D97FDE0826591A836AC14F02D5F7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_0C12A4883E624762951261947E5D624B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -71,6 +65,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_B2E128AC5B6AF2172D04EB7451F447B4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3BD9D97FDE0826591A836AC14F02D5F7"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -91,6 +91,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -107,6 +115,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -315,22 +339,22 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:75CentralPhotography EXIFViewer"
+        "ProductName" = "8:ExifViewer"
         "ProductCode" = "8:{A79A4140-5A2F-4452-8D99-500274306AB3}"
-        "PackageCode" = "8:{DCA55FB4-745A-4512-891D-97CCCE544DA1}"
+        "PackageCode" = "8:{3134F939-C17C-4808-A4EC-30D2ADDE4C26}"
         "UpgradeCode" = "8:{CC426645-1DC7-4292-B8E5-9E48944A8C61}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:matt@75central.com"
+        "Manufacturer" = "8:"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:75CentralPhotography EXIFViewer"
+        "Title" = "8:EXIFViewer"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:matt@75central.com"
+        "ARPCONTACT" = "8:"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -852,7 +876,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0C12A4883E624762951261947E5D624B"
             {
-            "SourcePath" = "8:..\\ExifViewer\\obj\\Debug\\ExifViewer.exe"
+            "SourcePath" = "8:..\\ExifViewer\\obj\\Release\\ExifViewer.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_8A74750B612D4C8CB9EC6CBA0BF35E50"
