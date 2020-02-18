@@ -34,6 +34,7 @@ Partial Class frmMain
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuRightClick = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ShowAllEXIFDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.pbPhoto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -46,11 +47,13 @@ Partial Class frmMain
         '
         Me.txtEXIF.Cursor = System.Windows.Forms.Cursors.WaitCursor
         Me.txtEXIF.Enabled = False
+        Me.txtEXIF.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEXIF.ForeColor = System.Drawing.Color.Black
         Me.txtEXIF.Location = New System.Drawing.Point(25, 432)
-        Me.txtEXIF.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtEXIF.Margin = New System.Windows.Forms.Padding(2)
         Me.txtEXIF.Multiline = True
         Me.txtEXIF.Name = "txtEXIF"
-        Me.txtEXIF.Size = New System.Drawing.Size(469, 298)
+        Me.txtEXIF.Size = New System.Drawing.Size(469, 358)
         Me.txtEXIF.TabIndex = 3
         Me.txtEXIF.UseWaitCursor = True
         '
@@ -63,7 +66,7 @@ Partial Class frmMain
         Me.pbPhoto.Cursor = System.Windows.Forms.Cursors.Default
         Me.pbPhoto.InitialImage = CType(resources.GetObject("pbPhoto.InitialImage"), System.Drawing.Image)
         Me.pbPhoto.Location = New System.Drawing.Point(25, 62)
-        Me.pbPhoto.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pbPhoto.Margin = New System.Windows.Forms.Padding(2)
         Me.pbPhoto.Name = "pbPhoto"
         Me.pbPhoto.Size = New System.Drawing.Size(468, 337)
         Me.pbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -72,8 +75,8 @@ Partial Class frmMain
         '
         'btnViewOnGoogleMaps
         '
-        Me.btnViewOnGoogleMaps.Location = New System.Drawing.Point(25, 752)
-        Me.btnViewOnGoogleMaps.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnViewOnGoogleMaps.Location = New System.Drawing.Point(25, 802)
+        Me.btnViewOnGoogleMaps.Margin = New System.Windows.Forms.Padding(2)
         Me.btnViewOnGoogleMaps.Name = "btnViewOnGoogleMaps"
         Me.btnViewOnGoogleMaps.Size = New System.Drawing.Size(468, 39)
         Me.btnViewOnGoogleMaps.TabIndex = 5
@@ -95,7 +98,7 @@ Partial Class frmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadPhotoToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoadPhotoToolStripMenuItem, Me.ShowAllEXIFDataToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(54, 29)
         Me.FileToolStripMenuItem.Text = "File"
@@ -103,13 +106,13 @@ Partial Class frmMain
         'LoadPhotoToolStripMenuItem
         '
         Me.LoadPhotoToolStripMenuItem.Name = "LoadPhotoToolStripMenuItem"
-        Me.LoadPhotoToolStripMenuItem.Size = New System.Drawing.Size(218, 34)
+        Me.LoadPhotoToolStripMenuItem.Size = New System.Drawing.Size(276, 34)
         Me.LoadPhotoToolStripMenuItem.Text = "Load Photo..."
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(218, 34)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(276, 34)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'AboutToolStripMenuItem
@@ -124,13 +127,20 @@ Partial Class frmMain
         Me.mnuRightClick.Name = "mnuRightClick"
         Me.mnuRightClick.Size = New System.Drawing.Size(61, 4)
         '
+        'ShowAllEXIFDataToolStripMenuItem
+        '
+        Me.ShowAllEXIFDataToolStripMenuItem.Enabled = False
+        Me.ShowAllEXIFDataToolStripMenuItem.Name = "ShowAllEXIFDataToolStripMenuItem"
+        Me.ShowAllEXIFDataToolStripMenuItem.Size = New System.Drawing.Size(276, 34)
+        Me.ShowAllEXIFDataToolStripMenuItem.Text = "Show All EXIF Data..."
+        '
         'frmMain
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(518, 812)
+        Me.ClientSize = New System.Drawing.Size(518, 861)
         Me.Controls.Add(Me.btnViewOnGoogleMaps)
         Me.Controls.Add(Me.pbPhoto)
         Me.Controls.Add(Me.txtEXIF)
@@ -138,7 +148,7 @@ Partial Class frmMain
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.Name = "frmMain"
         Me.Text = "EXIFVIewer"
@@ -159,4 +169,5 @@ Partial Class frmMain
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents mnuRightClick As ContextMenuStrip
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ShowAllEXIFDataToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -36,6 +36,7 @@ Public Class frmMain
         dtab.Columns.Add("latitude", GetType(System.String))
         dtab.Columns.Add("Longitude", GetType(System.String))
 
+
         'Dim sMsg As String = ""
         'For Each sArg As String In My.Application.CommandLineArgs
         '    sMsg &= sArg & ": "
@@ -67,10 +68,15 @@ Public Class frmMain
     Private Sub frmMain_DragDrop(sender As Object, e As DragEventArgs) Handles Me.DragDrop
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
+            Dim u As New utilities
+
             btnViewOnGoogleMaps.Visible = False
+            u.filename = files(0)
             DisplayEXIF(files(0))
             postDisplayActions(files(0))
             Me.Cursor = Cursors.Default
+            Me.ShowAllEXIFDataToolStripMenuItem.Enabled = True
+
 
         End If
     End Sub
@@ -248,7 +254,8 @@ Public Class frmMain
         Me.ofdSelect.ShowDialog()
         If Me.ofdSelect.FileName.Trim <> "" Then
             Me.btnViewOnGoogleMaps.Visible = False
-
+            Me.ShowAllEXIFDataToolStripMenuItem.Enabled = True
+            utilities.filename = Me.ofdSelect.FileName.Trim
             DisplayEXIF(Me.ofdSelect.FileName.Trim)
             postDisplayActions(Me.ofdSelect.FileName)
 
@@ -264,6 +271,16 @@ Public Class frmMain
     End Sub
 
     Private Sub pbPhoto_Click(sender As Object, e As EventArgs) Handles pbPhoto.Click
+
+    End Sub
+
+    Private Sub ViewAllExifDataToolStripMenuItem_Click(sender As Object, e As EventArgs)
+        allExif.Show()
+
+    End Sub
+
+    Private Sub ShowAllEXIFDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowAllEXIFDataToolStripMenuItem.Click
+        allExif.Show()
 
     End Sub
 End Class
