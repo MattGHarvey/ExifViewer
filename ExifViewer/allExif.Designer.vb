@@ -28,21 +28,25 @@ Partial Class allExif
         '
         'txtAllExif
         '
-        Me.txtAllExif.Location = New System.Drawing.Point(12, 12)
+        Me.txtAllExif.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAllExif.Location = New System.Drawing.Point(8, 8)
+        Me.txtAllExif.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.txtAllExif.Multiline = True
         Me.txtAllExif.Name = "txtAllExif"
         Me.txtAllExif.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtAllExif.Size = New System.Drawing.Size(851, 1170)
+        Me.txtAllExif.Size = New System.Drawing.Size(569, 762)
         Me.txtAllExif.TabIndex = 0
+        Me.txtAllExif.TabStop = False
         '
         'allExif
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(875, 1204)
+        Me.ClientSize = New System.Drawing.Size(583, 783)
         Me.Controls.Add(Me.txtAllExif)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "allExif"

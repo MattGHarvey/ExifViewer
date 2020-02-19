@@ -33,10 +33,11 @@ Partial Class frmAbout
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(221, 27)
-        Me.Label1.MaximumSize = New System.Drawing.Size(183, 0)
+        Me.Label1.Location = New System.Drawing.Point(121, 15)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.MaximumSize = New System.Drawing.Size(100, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(0, 25)
+        Me.Label1.Size = New System.Drawing.Size(0, 13)
         Me.Label1.TabIndex = 0
         '
         'ContextMenuStrip1
@@ -49,34 +50,38 @@ Partial Class frmAbout
         '
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(25, 27)
+        Me.TextBox1.Location = New System.Drawing.Point(14, 15)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(678, 137)
+        Me.TextBox1.Size = New System.Drawing.Size(370, 74)
         Me.TextBox1.TabIndex = 2
+        Me.TextBox1.TabStop = False
         Me.TextBox1.Text = "EXIFViewer is presented without warranty or guarantee and is licensed under the G" &
     "NU General Public License v3.0"
         '
         'lnkGitHub
         '
         Me.lnkGitHub.AutoSize = True
-        Me.lnkGitHub.Location = New System.Drawing.Point(20, 167)
+        Me.lnkGitHub.Location = New System.Drawing.Point(11, 90)
+        Me.lnkGitHub.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lnkGitHub.Name = "lnkGitHub"
-        Me.lnkGitHub.Size = New System.Drawing.Size(168, 25)
+        Me.lnkGitHub.Size = New System.Drawing.Size(92, 13)
         Me.lnkGitHub.TabIndex = 3
         Me.lnkGitHub.TabStop = True
         Me.lnkGitHub.Text = "Find Us on Github"
         '
         'frmAbout
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(733, 432)
+        Me.ClientSize = New System.Drawing.Size(400, 234)
         Me.Controls.Add(Me.lnkGitHub)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmAbout"

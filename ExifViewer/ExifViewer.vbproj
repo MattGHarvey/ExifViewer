@@ -64,9 +64,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MetadataExtractor, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetadataExtractor.2.0.0\lib\net45\MetadataExtractor.dll</HintPath>
+    <Reference Include="MetadataExtractor, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetadataExtractor.2.3.0\lib\net45\MetadataExtractor.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -80,8 +81,8 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="WindowsBase" />
-    <Reference Include="XmpCore, Version=5.1.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XmpCore.5.1.3\lib\net35\XmpCore.dll</HintPath>
+    <Reference Include="XmpCore, Version=6.1.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XmpCore.6.1.10\lib\net35\XmpCore.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +118,12 @@
       <DependentUpon>frmMain.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="map.Designer.vb">
+      <DependentUpon>map.vb</DependentUpon>
+    </Compile>
+    <Compile Include="map.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -133,6 +140,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="utilities.vb" />
+    <Compile Include="viewer.Designer.vb">
+      <DependentUpon>viewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="viewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="allExif.resx">
@@ -150,6 +163,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="viewer.resx">
+      <DependentUpon>viewer.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest" />
@@ -163,10 +179,10 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="license.txt" />
+    <None Include="packages.config" />
     <None Include="Resources\default.jpg" />
   </ItemGroup>
   <ItemGroup>

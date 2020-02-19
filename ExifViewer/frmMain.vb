@@ -271,7 +271,9 @@ Public Class frmMain
     End Sub
 
     Private Sub pbPhoto_Click(sender As Object, e As EventArgs) Handles pbPhoto.Click
-
+        If Not pbPhoto.Image Is Nothing Then
+            viewer.Show()
+        End If
     End Sub
 
     Private Sub ViewAllExifDataToolStripMenuItem_Click(sender As Object, e As EventArgs)
@@ -280,6 +282,9 @@ Public Class frmMain
     End Sub
 
     Private Sub ShowAllEXIFDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowAllEXIFDataToolStripMenuItem.Click
+        Me.Cursor = Cursors.WaitCursor
+
+
         allExif.Show()
 
     End Sub
