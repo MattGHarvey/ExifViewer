@@ -247,7 +247,10 @@ Public Class frmMain
     End Sub
 
     Private Sub btnViewOnGoogleMaps_Click(sender As Object, e As EventArgs) Handles btnViewOnGoogleMaps.Click
-        Process.Start(mapURL)
+        'Process.Start(mapURL)
+        '   map.gMap.Navigate(New Uri(mapURL))
+        map.Show()
+
     End Sub
 
     Private Sub LoadPhotoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoadPhotoToolStripMenuItem.Click
