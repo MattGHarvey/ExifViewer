@@ -5,13 +5,13 @@
         Dim imageheight As Integer = frmMain.pbPhoto.Image.Height
         Dim imagewidth As Integer = frmMain.pbPhoto.Image.Width
         Me.pbViewer.Image = frmMain.pbPhoto.Image
-        If imageheight < screenHeight Then
-            Me.Width = Me.pbViewer.Image.Width
-            Me.Height = Me.pbViewer.Image.Height
-        Else
-            Me.Width = Me.pbViewer.Image.Width
-            Me.Height = screenHeight
-        End If
+        'If imagewidth < screenWidth Then
+        '    Me.Width = Me.pbViewer.Image.Width
+        '    Me.Height = Me.pbViewer.Image.Height
+        'Else
+        Me.Width = screenWidth / 2
+            Me.Height = screenHeight / 2
+        'End If
 
     End Sub
 

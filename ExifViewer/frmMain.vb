@@ -247,9 +247,9 @@ Public Class frmMain
     End Sub
 
     Private Sub btnViewOnGoogleMaps_Click(sender As Object, e As EventArgs) Handles btnViewOnGoogleMaps.Click
-        'Process.Start(mapURL)
-        '   map.gMap.Navigate(New Uri(mapURL))
-        map.Show()
+        Process.Start(mapURL)
+        ' map.WebView1.Navigate(New Uri(mapURL))
+        '  map.Show()
 
     End Sub
 

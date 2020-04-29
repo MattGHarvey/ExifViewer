@@ -31,19 +31,21 @@ Partial Class viewer
         '
         Me.pbViewer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pbViewer.Location = New System.Drawing.Point(0, 0)
+        Me.pbViewer.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbViewer.Name = "pbViewer"
-        Me.pbViewer.Size = New System.Drawing.Size(985, 905)
-        Me.pbViewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbViewer.Size = New System.Drawing.Size(1478, 1392)
+        Me.pbViewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbViewer.TabIndex = 0
         Me.pbViewer.TabStop = False
         '
         'viewer
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(985, 905)
+        Me.ClientSize = New System.Drawing.Size(1478, 1392)
         Me.Controls.Add(Me.pbViewer)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MinimizeBox = False
         Me.Name = "viewer"
         Me.Text = "Image Viewer"
