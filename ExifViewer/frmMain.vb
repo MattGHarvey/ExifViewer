@@ -4,10 +4,12 @@ Imports System.Math
 Imports MetadataExtractor
 Imports MetadataExtractor.Formats.Exif
 Imports System.Drawing
+Imports System.Drawing.Imaging
 
 Public Class frmMain
     Public Shared dtab As New DataTable
     Public Shared mapURL As String
+    Public Shared masterFilename As String
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
 
     End Sub
@@ -72,6 +74,8 @@ Public Class frmMain
 
             btnViewOnGoogleMaps.Visible = False
             u.filename = files(0)
+            masterFilename = files(0)
+
             DisplayEXIF(files(0))
             postDisplayActions(files(0))
             Me.Cursor = Cursors.Default
@@ -112,6 +116,8 @@ Public Class frmMain
 
 
         End If
+        fs.Dispose()
+
         'ImageA.Dispose()
         ' ImageA = Nothing
 
@@ -291,4 +297,38 @@ Public Class frmMain
         allExif.Show()
 
     End Sub
+    'TODO: Finish implementation
+    Private Sub RemoveAllMetadataToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+        'MessageBox.Show()
+        Dim img As Image = Image.FromFile(masterFilename)
+        Dim jpgEncoder As ImageCodecInfo = GetEncoder(ImageFormat.Jpeg)
+        Dim myEncoder As System.Drawing.Imaging.Encoder = System.Drawing.Imaging.Encoder.Quality
+        Dim safeImage As New Bitmap(img)
+        Dim myEncoderParameters As New EncoderParameters(1)
+
+        Dim myEncoderParameter As New EncoderParameter(myEncoder, 50L)
+        myEncoderParameters.Param(0) = myEncoderParameter
+
+
+        myEncoderParameter = New EncoderParameter(myEncoder, 100L)
+        myEncoderParameters.Param(0) = myEncoderParameter
+        '  img.Save(masterFilename, ImageFormat.Jpeg, myEncoderParameters)
+        safeImage.Save(masterFilename, jpgEncoder, myEncoderParameters)
+
+
+
+
+    End Sub
+    Private Function GetEncoder(ByVal format As ImageFormat) As ImageCodecInfo
+
+        Dim codecs As ImageCodecInfo() = ImageCodecInfo.GetImageDecoders()
+        Dim codec As ImageCodecInfo
+        For Each codec In codecs
+            If codec.FormatID = format.Guid Then
+                Return codec
+            End If
+        Next codec
+        Return Nothing
+
+    End Function
 End Class
