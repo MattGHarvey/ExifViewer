@@ -3,12 +3,14 @@ Imports System.IO
 Imports System.Math
 Imports MetadataExtractor
 Imports MetadataExtractor.Formats.Exif
+Imports MetadataExtractor.Formats.Xmp
 Imports System.Drawing
 Imports System.Drawing.Imaging
 
 Public Class frmMain
     Public Shared dtab As New DataTable
     Public Shared mapURL As String
+    Public finalMapURL As Uri
     Public Shared masterFilename As String
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
 
@@ -71,14 +73,14 @@ Public Class frmMain
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
             Dim files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
             Dim u As New utilities
-
+            Me.Cursor = Cursors.Default
             btnViewOnGoogleMaps.Visible = False
             u.filename = files(0)
             masterFilename = files(0)
 
             DisplayEXIF(files(0))
             postDisplayActions(files(0))
-            Me.Cursor = Cursors.Default
+
             Me.ShowAllEXIFDataToolStripMenuItem.Enabled = True
 
 
@@ -108,7 +110,8 @@ Public Class frmMain
         Me.pbPhoto.BackgroundImage = Nothing
 
         If mapURL <> "" Then
-            Dim finalMapURL As New Uri(mapURL)
+            finalMapURL = New System.Uri(mapURL)
+
             btnViewOnGoogleMaps.Visible = True
 
 
@@ -128,9 +131,14 @@ Public Class frmMain
     Private Sub DisplayEXIF(filename As String)
         Dim directories As IEnumerable(Of MetadataExtractor.Directory) = ImageMetadataReader.ReadMetadata(filename)
         Dim directory = directories.OfType(Of ExifSubIfdDirectory)().FirstOrDefault()
+        'Dim directory = directories.OfType(O)().FirstOrDefault()
         Dim deviceDirectory = directories.OfType(Of ExifIfd0Directory)().FirstOrDefault
 
         Dim gpsdirectory = directories.OfType(Of GpsDirectory)().FirstOrDefault()
+
+        Dim u As New utilities
+        Dim docreate As Boolean = u.CreatePreset(filename)
+
         Dim latitude = Nothing
         Dim datetime = Nothing
         Dim Longitude = Nothing
@@ -219,9 +227,10 @@ Public Class frmMain
 
             Console.WriteLine("Coordinates:" & latitude & "," & Longitude)
             exifString = exifString & vbCrLf & "Coordinates: " & latitude & "," & Longitude
-            mapURL = "https://www.google.com/maps/search/?api=1&query=" & latitude & "," & Longitude
+            mapURL = "https://www.google.com/maps/search/?api=1&zoom=20&query=" & latitude & "," & Longitude
+            ' mapURL = "https://www.google.com/maps/@" & latitude & "," & Longitude & ",15z"
 
-
+            'data=!5m1!1e1
         End If
 
         dtab.Rows.Add(fName, datetime, focallength, ShutterSpeed, ISO, aperture, camera, TagExposureBias, TagMeteringMode, TagFlash, TagLensModel, ColorSpace, latitude, Longitude)
@@ -253,9 +262,9 @@ Public Class frmMain
     End Sub
 
     Private Sub btnViewOnGoogleMaps_Click(sender As Object, e As EventArgs) Handles btnViewOnGoogleMaps.Click
-        Process.Start(mapURL)
-        ' map.WebView1.Navigate(New Uri(mapURL))
-        '  map.Show()
+        'Process.Start(mapURL)
+        map.WebView1.Navigate(New Uri(mapURL))
+        map.Show()
 
     End Sub
 
@@ -331,4 +340,11 @@ Public Class frmMain
         Return Nothing
 
     End Function
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
+        'Dim filename = masterFilename;
+        'Dim directories As IEnumerable(Of MetadataExtractor.Directory) = ImageMetadataReader.ReadMetadata(filename).OfType(Of XMPDirectory)
+        'Dim gpsdirectory = directories.OfType
+
+    End Sub
 End Class
